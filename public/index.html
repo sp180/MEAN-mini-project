@@ -2,21 +2,7 @@
 <html>
   <script src="/socket.io/socket.io.js"></script>
   <!-- <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script> -->
-  <script>
-    var socket = io();
-    var messageSend;
-    messageSend.submit(function() {
-      socket.emit('chat message', document.getElementById('m').value());
-      document.getElementById('m').value('');
-      return false;
-    });
-    document.querySelectorAll('action').addEventListener("click", messageSend);
-    // $('form').submit(function(){
-    //   socket.emit('chat message', $('#m').val());
-    //   $('#m').val('');
-    //   return false;
-    // });
-  </script>
+
   <head>
     <title>Sample Chat</title>
     <style>
@@ -32,8 +18,36 @@
   </head>
   <body>
     <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+    <form id="form" action="">
+      <input id="m" autocomplete="off" /><button type="submit">Send</button>
     </form>
+
+
+    <script>
+      var socket = io();
+      var form = document.querySelector('#form');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var message = document.querySelector('#m').value;
+        // the below sends what is in the input field to the terminal through 'chat message', which is found
+        // in server.js through socket.on('chat message', function(msg){ "do this with the msg parameter" }
+        socket.emit('chat message', document.querySelector('#m').value);
+        // the below sends what is in the input field to the console
+        console.log(message);
+      });
+
+      // jQuery equivalent below, commented out
+      ////////////////////////////////////////////////
+      // $('form').submit(function(){
+      //   socket.emit('chat message', $('#m').val());
+      //   $('#m').val('');
+      //   return false;
+      // });
+      // socket.on('chat message', function(msg){
+      //   $('#messages').append($('<li>').text(msg));
+      // });
+      ////////////////////////////////////////////////
+
+    </script>
   </body>
 </html>

@@ -19,9 +19,12 @@ app.get('/', function(req, res){
 // 'connection' is a keyword indicating an action has occured
 io.on('connection', function(socket){
   console.log('A User Connected');
-  // 'chat message' relays the message in the form to the terminal
+  // 'chat message' receives the message in the form
   socket.on('chat message', function(msg){
+    // this relays the message in the form to the terminal
     console.log('message: ' + msg);
+    // this relays the message in the form to the client side
+    io.emit('chat message', msg);
   });
   // 'disconnect' appears when a user leaves the server
   socket.on('disconnect', function(){
