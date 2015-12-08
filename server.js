@@ -6,11 +6,12 @@ const app = express();
 const mongoose = require('mongoose');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-app.use(express.static('./public'))
+
+app.use(express.static('./public'));
 
 app.get('/', function(req, res){
 
-})
+});
 // Testing express route
 // app.get('/', function(req, res){
 //   // The below literally sends an html string to the browser page
