@@ -12,6 +12,7 @@ app.use(express.static('./public'));
 app.get('/', function(req, res){
 
 });
+
 // Testing express route
 // app.get('/', function(req, res){
 //   // The below literally sends an html string to the browser page
