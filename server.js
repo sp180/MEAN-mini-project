@@ -6,15 +6,19 @@ const app = express();
 const mongoose = require('mongoose');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+app.use(express.static('./public'))
 
-// Testing express route
 app.get('/', function(req, res){
-  // The below literally sends an html string to the browser page
-  // res.send('<h1>Hello world</h1>');
 
-  // The below sends the contents of index.html, from the 'public' directory, to the browser page
-  res.sendFile(__dirname + '/public/index.html');
-});
+})
+// Testing express route
+// app.get('/', function(req, res){
+//   // The below literally sends an html string to the browser page
+//   // res.send('<h1>Hello world</h1>');
+//
+//   // The below sends the contents of index.html, from the 'public' directory, to the browser page
+//   res.sendFile(__dirname + '/public/index.html');
+// });
 
 // 'connection' is a keyword indicating an action has occured
 io.on('connection', function(socket){
