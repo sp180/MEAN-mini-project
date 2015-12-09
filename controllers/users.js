@@ -4,7 +4,7 @@ var router = express.Router();
 var app = express();
 var routes = require('../routes/user_routes');
 
-///// create user (POST http://localhost:3000/user/signup) /////////////////////
+///// create user (POST http://localhost:9000/user/signup) /////////////////////
 function createUser(req, res) {
   console.log("signup route hit");
   console.log(req.body);
@@ -26,7 +26,7 @@ function createUser(req, res) {
   });
 }
 
-///// show all users (GET http://localhost:3000/user/users) ////////////////////
+///// show all users (GET http://localhost:9000/user/users) ////////////////////
 function showAllUsers(req, res) {
   User.find({}, function(err, users) {
     console.log('hit /users/show')
@@ -34,7 +34,7 @@ function showAllUsers(req, res) {
   });
 }
 
-///// edit user (PUT http://localhost:3000/user/edit) //////////////////////////
+///// edit user (PUT http://localhost:9000/user/edit) //////////////////////////
 function editUser(req, res) {
   let userParams = req.body.user;
   User.findOne({email: userParams.email} , function (err, user) {
@@ -48,7 +48,7 @@ function editUser(req, res) {
   })
 }
 
-///// delete user (DELETE http://localhost:3000/user/delete) ///////////////////
+///// delete user (DELETE http://localhost:9000/user/delete) ///////////////////
 function deleteUser(req, res) {
   console.log('hit delete')
   let userParams = req.body.username;

@@ -41,7 +41,7 @@ io.on('connection', function(socket){
 
 
 // Testing server
-// server.listen(3000);
+// server.listen(9000);
 
 // Allows for Heroku
 server.listen(process.env.PORT || 9000, function(){
