@@ -1,5 +1,9 @@
 console.log("app.js is loaded");
 
+angular
+  .module('MeanChat', ['ui.router'])
+  .config(UserRouter);
+
 var socket = io();
 var form = document.getElementById('form');
 form.addEventListener('submit', function(e){

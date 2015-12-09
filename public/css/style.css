@@ -36,6 +36,8 @@ form button {
    float: left;
    position: absolute;
    height: calc(100% - (30px));
+   border: 2px solid black;
+   padding: 5px;
    left: 0;
    top: 0;
    z-index: 0;
@@ -63,7 +65,8 @@ form button {
    float: right;
    width: 25%;
    height: calc(100% - (30px));
-   border: 2px solid white;
+   border: 2px solid black;
+   padding: 5px;
    position: absolute;
    right: 0;
    top: 0;
@@ -91,6 +94,6 @@ form button {
 }
 
 #user-list li:nth-child(odd) {
-   color: beige;
+   color: blue;
    background: rgba(100,100,100,0);
 }

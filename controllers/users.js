@@ -2,7 +2,7 @@ var express = require('express');
 var User = require('../models/user');
 var router = express.Router();
 var app = express();
-var routes = require('../routes/user_routes'); // cross-check this
+var routes = require('../routes/user_routes');
 
 ///// create user (POST http://localhost:3000/user/signup) /////////////////////
 function createUser(req, res) {
