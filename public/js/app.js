@@ -11,11 +11,11 @@ function UserRouter($stateProvider, $urlRouterProvider){
   $stateProvider
   .state('index', {
     url: '/',
-    templateUrl: 'list.html'
+    templateUrl: 'index.html'
   })
-  .state('new', {
-    url: '/new',
-    templateUrl: 'new.html'
+  .state('chat', {
+    url: '/chat',
+    templateUrl: 'chat.html'
   })
   .state('about', {
     url: '/about',
@@ -30,7 +30,7 @@ function UserRouter($stateProvider, $urlRouterProvider){
 
 var socket = io();
 var form = document.getElementById('form');
-form.addEventListener('submit', function(e){
+document.body.addEventListener('submit', form, function(e){
   // preventDefault() prevents the default action addEventListener takes when invoked,
   // which is to post a form and access an url route
   e.preventDefault();
