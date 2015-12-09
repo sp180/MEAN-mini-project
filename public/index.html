@@ -9,11 +9,21 @@
     <title>MEAN Chat</title>
   </head>
   <body ng-app='MeanChat'>
-    <ul id="messages">
-    </ul>
+    <div class="container">
+
+      <div id="messages-box">
+        <ul id="messages"></ul>
+      </div>
+
+      <div id="user-list-box">
+        <ul id="user-list"></ul>
+      </div>
+
     <form id="form" action="">
       <input id="m" autocomplete="off" placeholder="Input Message Here"/><button type="submit">Send</button>
     </form>
+
+    </div>
   <script src="js/app.js"></script>
   </body>
 </html>
