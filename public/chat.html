@@ -1,18 +1,30 @@
-<div id="messages-box">
-  <ul id="messages"></ul>
-</div>
+<section ng-controller='ChatsController as chats' ui-view>
+  <div id="messages-box">
+    <ul id="messages">
+      <li ng-repeat="chat in chats">
+        <h4>{{ user.username }}</h4>
+        <form ng-submit='sendMessage(joyful)'>
+          <input type="text" ng-model="chat.message">
+          <input type="submit" value="Text">
+        </form>
+      </li>
+    </ul>
+  </div>
+</section>
 
 <section ng-controller='UsersController as users' ui-view>
   <div id="user-list-box">
     <ul id="user-list">
       <li style="text-decoration: underline; font-weight: bold; color: black">Users Connected:</li>
       <li ng-repeat="user in users.all" data-id="{{user._id}}">
-        <strong>{{user.name}}</strong>
+        <strong>{{user.username}}</strong>
       </li>
     </ul>
   </div>
 </section>
 
-<form id="form" action="">
-  <input id="m" autocomplete="off" placeholder="Input Message Here"/><button type="submit">Send</button>
-</form>
+<section ng-controller='ChatsController as chats' ui-view>
+  <form id="form" action="">
+    <input id="m" autocomplete="off" placeholder="Input Message Here"/><button ng-click="chats.submit">Send</button>
+  </form>
+</section>

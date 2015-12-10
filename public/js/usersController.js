@@ -31,7 +31,7 @@ function UsersController($http){
 
   function deleteUser(user){
     $http
-      .delete("http://localhost:9000/users/" + user._id)
+      .delete('http://localhost:9000/users/' + user._id)
       .then(function(response){
         var index = self.all.indexOf(user);
         self.all.splice(index, 1);

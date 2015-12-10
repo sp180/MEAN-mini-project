@@ -1,8 +1,11 @@
 <div id="createuserpage">
   <div class="createform">
-    <input type="text" id="login-new" placeholder="Enter New User Name">
-    <input type="text" id="email-new" placeholder="YourEmail@domain.com">
-    <input type="password" id="password-new" placeholder="Enter New Password">
-    <button type="button" id="create-submit">Submit</button>
+    <form ng-submit="users.addUser()" class="createform" id="newUser">
+      <input type="text" id="login-new" ng-model="users.newUser.username" placeholder="Enter New User Name">
+      <input type="text" id="email-new" ng-model="users.newUser.email" placeholder="YourEmail@domain.com">
+      <input type="password" id="password-new" ng-model="users.newUser.password" placeholder="Enter New Password">
+      <input type="submit" id="create-submit">
+    </form>
   </div>
+    <a ui-sref="index">Return to the Welcome Page</a>
 </div>

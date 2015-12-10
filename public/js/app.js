@@ -2,35 +2,36 @@ console.log("app.js is loaded");
 
 angular
   .module('MeanChat', ['ui.router'])
-  .config(UserRouter);
+  .config(Router);
 
-function UserRouter($stateProvider, $urlRouterProvider){
+function Router($stateProvider, $urlRouterProvider){
 
-  $urlRouterProvider.otherwise("/index");
+  $urlRouterProvider.otherwise("/");
 
   $stateProvider
   .state('index', {
     url: '/',
-    templateUrl: 'index.html'
+    templateUrl: 'welcome.html'
   })
   .state('chat', {
     url: '/chat',
     templateUrl: 'chat.html'
   })
-  .state('about', {
-    url: '/about',
-    templateUrl: 'about.html'
+  .state('create', {
+    url: '/create',
+    templateUrl: 'create.html'
   })
-  .state('show', {
-    url: '/users/:id',
-    templateUrl: 'show.html'
+  .state('login', {
+    url: '/login',
+    templateUrl: 'login.html'
   });
 
 }
 
 var socket = io();
 var form = document.getElementById('form');
-document.body.addEventListener('submit', form, function(e){
+
+self.submit = function() {
   // preventDefault() prevents the default action addEventListener takes when invoked,
   // which is to post a form and access an url route
   e.preventDefault();

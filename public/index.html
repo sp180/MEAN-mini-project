@@ -10,18 +10,10 @@
   </head>
   <body ng-app='MeanChat'>
     <div class="container">
-      <div id="welcomepage">
-        <h1>Welcome</h1>
-        <nav>
-          <a ui-sref="create">Create an Account</a>
-          <a ui-sref="login">Login</a>
-          <a ui-sref="chat">Just Go Straight to Chatting</a>
-          <a ui-sref="welcome">Sample Welcome Page</a>
-        </nav>
-      </div>
       <ui-view/> <!-- this allows whatever ui-sref you click on to populate within -->
     </div>
   <script src="js/app.js"></script>
   <script src="js/usersController.js"></script>
+  <script src="js/chatsController.js"></script>
   </body>
 </html>
