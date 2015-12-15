@@ -6,13 +6,17 @@ const app = express();
 const mongoose = require('mongoose');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+const router = require('./config/routes.js');
 
 app.use(express.static('./public'));
 app.use('/node_modules', express.static('./node_modules'));
 
+app.get('/', router);
+
 app.get('/', function(req, res){
 
 });
+
 
 // Testing express route
 // app.get('/', function(req, res){

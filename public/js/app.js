@@ -31,7 +31,8 @@ function Router($stateProvider, $urlRouterProvider){
 var socket = io();
 var form = document.getElementById('form');
 
-self.submit = function() {
+// self.submit = function() { // this is line of code was removed because nothing worked after including it
+document.body.addEventListener('submit', form, function(e){
   // preventDefault() prevents the default action addEventListener takes when invoked,
   // which is to post a form and access an url route
   e.preventDefault();

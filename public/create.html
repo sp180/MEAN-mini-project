@@ -1,4 +1,4 @@
-<div id="createuserpage">
+<div ng-controller="UsersController as users" id="createuserpage">
   <div class="createform">
     <form ng-submit="users.addUser()" class="createform" id="newUser">
       <input type="text" id="login-new" ng-model="users.newUser.username" placeholder="Enter New User Name">

@@ -2,7 +2,7 @@ var express = require('express');
 var User = require('../models/user');
 var router = express.Router();
 var app = express();
-var routes = require('../routes/user_routes');
+// var routes = require('../routes/user_routes');
 
 ///// create user (POST http://localhost:9000/user/signup) /////////////////////
 function createUser(req, res) {
@@ -34,9 +34,18 @@ function showAllUsers(req, res) {
   });
 }
 
+///// show a user (GET http://localhost:9000/user/user) ////////////////////
+function getUser(req, res) {
+  var userParams = req.body.user;
+  User.findOne({email: userParams.email}, function(err, user) {
+    console.log('hit /users/show')
+    res.send(user);
+  });
+}
+
 ///// edit user (PUT http://localhost:9000/user/edit) //////////////////////////
 function editUser(req, res) {
-  let userParams = req.body.user;
+  var userParams = req.body.user;
   User.findOne({email: userParams.email} , function (err, user) {
     user.update(
       {email: userParams.email},
@@ -51,7 +60,7 @@ function editUser(req, res) {
 ///// delete user (DELETE http://localhost:9000/user/delete) ///////////////////
 function deleteUser(req, res) {
   console.log('hit delete')
-  let userParams = req.body.username;
+  var userParams = req.body.username;
   User.findOne({ username: userParams.username}, function (err, user) {
     if (err) {
       console.log('user not deleted');

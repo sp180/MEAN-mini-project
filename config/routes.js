@@ -1,40 +1,40 @@
 var express = require('express'),
     router = express.Router(),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override');
+    bodyParser = require('body-parser');
+    // methodOverride = require('method-override');
 
 var usersController = require('../controllers/users');
 
 // http://127.0.0.1:9000/users
 router.route('/users')
   //GET all users
-  .get(usersController.getAll)
+  .get(usersController.showAllUsers)
   //POST new users
   .post(usersController.createUser);
 
 router.route('/users/:id')
   // GET return specific users
-  .get(usersController.getUser)
+  // .get(usersController.getUser)
   // PATCH update existing users
-  .patch(usersController.updateUser)
+  .patch(usersController.editUser)
   // DELETE remove specific users from DB
-  .delete(usersController.removeUser);
+  .delete(usersController.deleteUser);
 
 var chatsController = require('../controllers/chats');
 
 // http://127.0.0.1:9000/chats
 router.route('/chats')
   //GET all chats
-  .get(chatsController.getAll)
+  .get(chatsController.showAllChats)
   //POST new chats
   .post(chatsController.createChat);
 
 router.route('/chats/:id')
   // GET return specific chats
-  .get(chatsController.getChat)
+  // .get(chatsController.getChat)
   // PATCH update existing chats
-  .patch(chatsController.updateChat)
+  // .patch(chatsController.updateChat)
   // DELETE remove specific chats from DB
-  .delete(chatsController.removeChat);
+  .delete(chatsController.deleteChat);
 
 module.exports = router
