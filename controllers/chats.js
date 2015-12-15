@@ -2,7 +2,7 @@ var express = require('express');
 var Chat = require('../models/chat');
 var router = express.Router();
 var app = express();
-// var routes = require('../routes/chat_routes');
+// var routes = require('../config/routes');
 
 ///// create chat (POST http://localhost:9000/chat) /////////////////////
 function createChat(req, res) {

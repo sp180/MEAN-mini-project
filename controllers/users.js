@@ -2,7 +2,7 @@ var express = require('express');
 var User = require('../models/user');
 var router = express.Router();
 var app = express();
-// var routes = require('../routes/user_routes');
+// var routes = require('../config/routes');
 
 ///// create user (POST http://localhost:9000/user/signup) /////////////////////
 function createUser(req, res) {
@@ -26,8 +26,9 @@ function createUser(req, res) {
   });
 }
 
-///// show all users (GET http://localhost:9000/user/users) ////////////////////
+///// show all users (GET http://localhost:9000/api/users) ////////////////////
 function showAllUsers(req, res) {
+  console.log('in showAllUsers')
   User.find({}, function(err, users) {
     console.log('hit /users/show')
     res.send(users);

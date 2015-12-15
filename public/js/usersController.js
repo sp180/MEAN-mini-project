@@ -10,7 +10,7 @@ function UsersController($http){
   self.newUser = {};
   self.getUsers = getUsers;
   self.deleteUser = deleteUser;
-  console.log(self.newUser); // test to see if self.newUser is in existence
+  // console.log(self.newUser); // test to see if self.newUser is in existence
   getUsers();
 
   function getUsers(){
@@ -19,6 +19,14 @@ function UsersController($http){
       .then(function(response){
         self.all = response.data.users;
     });
+  }
+
+  function createUser(){
+    $http
+      .get('http://localhost:9000/users')
+      .then(function(response){
+        getUsers();
+      });
   }
 
   function addUser(){
@@ -33,7 +41,7 @@ function UsersController($http){
 
   function deleteUser(user){
     $http
-      .delete('http://localhost:9000/users/' + user._id)
+      .delete('http://localhost:9000/users' + user._id)
       .then(function(response){
         var index = self.all.indexOf(user);
         self.all.splice(index, 1);

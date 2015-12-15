@@ -6,15 +6,47 @@ const app = express();
 const mongoose = require('mongoose');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const router = require('./config/routes.js');
+// const router = require('./config/routes');
+const usersController = require('./controllers/users');
+
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/meanchat');
 
 app.use(express.static('./public'));
 app.use('/node_modules', express.static('./node_modules'));
 
-app.get('/', router);
+// GET retrieve and show all users
+app.get('/users', function(req, res) {
+  res.json(usersController.showAllUsers)
+});
 
-app.get('/', function(req, res){
+// POST create a new user
+app.post('/users', function(req, res) {
+  res.json(usersController.createUser)
+});
 
+// PATCH update existing user
+app.patch('/users/:id', function(req, res) {
+  res.json(usersController.editUser)
+});
+
+// DELETE remove specific user from DB
+app.delete('/users/:id', function(req, res) {
+  res.json(usersController.deleteUser)
+});
+
+// GET retrieve and show all chat messages
+app.get('/chats', function(req, res) {
+  res.json(chatsController.showAllChats)
+});
+
+// POST create a new chat message
+app.post('/chats', function(req, res) {
+  res.json(chatsController.createChat)
+});
+
+// DELETE remove a specific chat message from DB
+app.delete('/chats/:id', function(req, res) {
+  res.json(chatsController.deleteChat)
 });
 
 

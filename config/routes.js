@@ -1,10 +1,13 @@
 var express = require('express'),
     router = express.Router(),
-    bodyParser = require('body-parser');
-    // methodOverride = require('method-override');
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override');
 
 var usersController = require('../controllers/users');
 
+router.route('/test', function(req, res){
+  res.send("sooooooooooo");
+})
 // http://127.0.0.1:9000/users
 router.route('/users')
   //GET all users
@@ -37,4 +40,4 @@ router.route('/chats/:id')
   // DELETE remove specific chats from DB
   .delete(chatsController.deleteChat);
 
-module.exports = router
+// module.exports = router
