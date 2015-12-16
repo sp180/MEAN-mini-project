@@ -34,7 +34,7 @@ function showAllUsers(req, res) {
 
 ///// show a user (GET http://localhost:9000/user/user) ////////////////////
 function getUser(req, res) {
-  var userParams = req.body.user;
+  var userParams = req.user;
   User.findOne({email: userParams.email}, function(err, user) {
     console.log('hit /users/show')
     res.send(user);
@@ -43,7 +43,7 @@ function getUser(req, res) {
 
 ///// edit user (PUT http://localhost:9000/user/edit) //////////////////////////
 function editUser(req, res) {
-  var userParams = req.body.user;
+  var userParams = req.user;
   User.findOne({email: userParams.email} , function (err, user) {
     user.update(
       {email: userParams.email},
@@ -58,7 +58,7 @@ function editUser(req, res) {
 ///// delete user (DELETE http://localhost:9000/user/delete) ///////////////////
 function deleteUser(req, res) {
   console.log('hit delete')
-  var userParams = req.body.username;
+  var userParams = req.username;
   User.findOne({ username: userParams.username}, function (err, user) {
     if (err) {
       console.log('user not deleted');

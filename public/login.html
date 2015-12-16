@@ -1,8 +1,10 @@
-<div id="loginuserpage">
+<div ng-controller="UsersController as users" id="loginuserpage">
   <div class="loginform">
-    <input type="text" id="login" placeholder="Enter User Name">
-    <input type="password" id="password" placeholder="Enter Password">
-    <button type="button" id="login-submit">Submit</button>
-    <a ui-sref="index">Return to the Welcome Page</a>
+    <form ng-submit="users.getUsers()" class="loginform" id="loginUser">
+      <input type="text" id="login" placeholder="Enter User Name">
+      <input type="password" id="password" placeholder="Enter Password">
+      <input type="submit" id="login-submit">
+    </form>
   </div>
+    <a ui-sref="index">Return to the Welcome Page</a>
 </div>
