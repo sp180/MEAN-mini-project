@@ -21,9 +21,15 @@ app.get('/users', function(req, res) {
 });
 
 // POST create a new user
-app.post('/users', function(req, res) {
+// app.post('/users', function(req, res) {
+//   console.log(req.body);
+//   res.json(usersController.createUser(req.body));
+// });
+
+// POST authenticate while logging in
+app.post('/users', function(req, res) { // err is thrown despite working, check later
   console.log(req.body);
-  res.json(usersController.createUser(req.body));
+  res.send(usersController.auth(req.body));
 });
 
 // PATCH update existing user

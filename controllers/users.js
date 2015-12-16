@@ -32,14 +32,33 @@ function showAllUsers(req, res) {
   });
 }
 
-///// show a user (GET http://localhost:9000/user/user) ////////////////////
-function getUser(req, res) {
-  var userParams = req.user;
-  User.findOne({email: userParams.email}, function(err, user) {
-    console.log('hit /users/show')
-    res.send(user);
+///// authentication (POST http://localhost:3000/user/authenticate) ////////////
+///// code below allows us to check our user and password
+///// in a JSON response. Mongoose is used to find the user
+function auth(req, res) {
+  console.log(req.username, req.password);
+  User.findOne( {username: req.username}, function(err, user) {
+    console.log('inside auth function in users controller');
+    if(!user) {
+      console.log(req.username);
+      ///// check for user in database
+      res.send({ success: false, message: 'Authentication failed. User not found.' });
+    } else if (user) {
+        console.log(user + 'this is our user right before user.authenticate');
+        console.log(req.password);
+        user.authenticate(req.password, function (err, isMatch) {
+          console.log('inside user.authenticate');
+          if (isMatch) {
+            console.log('User is Signed In');
+          }
+        });
+    } else {
+      console.log('Invalid credentials');
+    }
   });
-}
+};
+
+
 
 ///// edit user (PUT http://localhost:9000/user/edit) //////////////////////////
 function editUser(req, res) {
@@ -73,6 +92,7 @@ function deleteUser(req, res) {
 module.exports = {
   createUser: createUser,
   showAllUsers: showAllUsers,
+  auth: auth,
   editUser: editUser,
   deleteUser: deleteUser
 }

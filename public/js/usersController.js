@@ -9,6 +9,7 @@ function UsersController($http){
   self.addUser = addUser;
   self.newUser = {};
   self.getUsers = getUsers;
+  self.authUser = authUser;
   self.deleteUser = deleteUser;
   // console.log(self.newUser); // test to see if self.newUser is in existence
   getUsers();
@@ -38,6 +39,20 @@ function UsersController($http){
         getUsers();
     });
     self.newUser = {};
+  }
+
+// lookup how to make form submission and grab fields in angular
+  function authUser(){
+    $http
+      ({
+        url: '/users',
+        method: 'POST',
+        data: {username: 'sp180', password: 'password' }
+    })
+      .then(function(response) {
+        console.log(response);
+        getUsers();
+      });
   }
 
   function deleteUser(user){
