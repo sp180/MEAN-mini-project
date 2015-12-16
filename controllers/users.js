@@ -6,27 +6,24 @@ var app = express();
 
 ///// create user (POST http://localhost:9000/user/signup) /////////////////////
 function createUser(req, res) {
-  console.log("signup route hit");
-  console.log(req.body);
   var userObj = new User({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password
+    username: req.username,
+    email: req.email,
+    password: req.password
   });
-  console.log(req.body);
-  console.log('inside createUser');
+  console.log(userObj);
   userObj.save(function(err, user) {
     if (err) {
-      console.log('about to error yo');
-      return res.status(401).send({message: err.errmsg});
+      console.log('if this shows up, err is in the wrong spot '+err)
+      // return res.status(401).send({message: err.errmsg});
     } else {
-      return res.status(200).send(user);
+      console.log('Success! User Saved!')
+      // return res.status(200).send(user);
     }
-    console.log(user);
   });
 }
 
-///// show all users (GET http://localhost:9000/api/users) ////////////////////
+///// show all users (GET http://localhost:9000/users) ////////////////////
 function showAllUsers(req, res) {
   console.log('in showAllUsers')
   User.find({}, function(err, users) {

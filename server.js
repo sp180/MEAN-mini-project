@@ -11,6 +11,7 @@ const usersController = require('./controllers/users');
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/meanchat');
 
+app.use(bodyParser.json());
 app.use(express.static('./public'));
 app.use('/node_modules', express.static('./node_modules'));
 
@@ -21,7 +22,8 @@ app.get('/users', function(req, res) {
 
 // POST create a new user
 app.post('/users', function(req, res) {
-  res.json(usersController.createUser)
+  console.log(req.body);
+  res.json(usersController.createUser(req.body));
 });
 
 // PATCH update existing user

@@ -32,8 +32,9 @@ function UsersController($http){
   function addUser(){
     console.log(self.newUser); // test to see if self.newUser has key:values created
     $http
-      .post('http://localhost:9000/users', self.newUser)
+      .post('/users', self.newUser)
       .then(function(response){
+        console.log(response);
         getUsers();
     });
     self.newUser = {};
