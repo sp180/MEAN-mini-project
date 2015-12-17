@@ -1,8 +1,8 @@
 <div ng-controller="UsersController as users" id="loginuserpage">
   <div class="loginform">
     <form ng-submit="users.authUser()" class="loginform" id="loginUser">
-      <input type="text" id="login" placeholder="Enter User Name">
-      <input type="password" id="password" placeholder="Enter Password">
+      <input type="text" id="login" ng-model="users.username" placeholder="Enter User Name">
+      <input type="password" id="password" ng-model="users.password" placeholder="Enter Password">
       <input type="submit" id="login-submit">
     </form>
   </div>

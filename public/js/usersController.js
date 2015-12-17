@@ -43,11 +43,12 @@ function UsersController($http){
 
 // lookup how to make form submission and grab fields in angular
   function authUser(){
+    console.log(self.username, self.password);
     $http
       ({
         url: '/users',
         method: 'POST',
-        data: {username: 'sp180', password: 'password' }
+        data: {username: self.username, password: self.password }
     })
       .then(function(response) {
         console.log(response);
