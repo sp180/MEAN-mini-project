@@ -6,11 +6,10 @@ var app = express();
 
 ///// create chat (POST http://localhost:9000/chat) /////////////////////
 function createChat(req, res) {
-  console.log("signup route hit");
   console.log(req.body);
-  var userObj = new Chat({
-    username: req.body.username,
-    message: req.body.message
+  var chatObj = new Chat({
+    username: req.username,
+    message: req.message
   });
   console.log(req.body);
   console.log('inside createChat');
@@ -37,13 +36,13 @@ function showAllChats(req, res) {
 ///// delete chat (DELETE http://localhost:9000/chat/delete) ///////////////////
 function deleteChat(req, res) {
   console.log('hit delete')
-  var userParams = req.body.username;
-  User.findOne({ username: userParams.username}, function (err, user) {
+  var chatParams = req.message;
+  Chat.findOne({ message: chatParams.chat}, function (err, chat) {
     if (err) {
-      console.log('user not deleted');
-      console.log(user);
+      console.log('chat not deleted');
+      console.log(chat);
       return;
-    } User.remove(function(err, user) {
+    } Chat.remove(function(err, user) {
       res.send({"record" : "deleted"});
     });
   });

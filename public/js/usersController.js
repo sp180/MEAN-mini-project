@@ -48,7 +48,10 @@ function UsersController($http){
       ({
         url: '/user',
         method: 'POST',
-        data: {username: self.username, password: self.password }
+        data: {
+          username: self.username,
+          password: self.password
+        }
     })
       .then(function(response) {
         console.log(response);

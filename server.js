@@ -8,6 +8,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 // const router = require('./config/routes');
 const usersController = require('./controllers/users');
+const chatsController = require('./controllers/chats');
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/meanchat');
 
