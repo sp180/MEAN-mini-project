@@ -46,7 +46,7 @@ function UsersController($http){
     console.log(self.username, self.password);
     $http
       ({
-        url: '/users',
+        url: '/user',
         method: 'POST',
         data: {username: self.username, password: self.password }
     })

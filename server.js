@@ -12,7 +12,7 @@ const usersController = require('./controllers/users');
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/meanchat');
 
 app.use(bodyParser.json());
-app.use(express.static('./public'));
+app.use(express.static('./public')); // this is the front end directory
 app.use('/node_modules', express.static('./node_modules'));
 
 // GET retrieve and show all users
@@ -21,13 +21,13 @@ app.get('/users', function(req, res) {
 });
 
 // POST create a new user
-// app.post('/users', function(req, res) {
-//   console.log(req.body);
-//   res.json(usersController.createUser(req.body));
-// });
+app.post('/users', function(req, res) {
+  console.log(req.body);
+  res.json(usersController.createUser(req.body));
+});
 
 // POST authenticate while logging in
-app.post('/users', function(req, res) { // err is thrown despite working, check later
+app.post('/user', function(req, res) { // err is thrown despite working, check later
   console.log(req.body);
   res.send(usersController.auth(req.body));
 });
